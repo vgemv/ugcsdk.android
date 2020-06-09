@@ -1,0 +1,14 @@
+jdk:
+  - openjdk9
+before_install:
+   - echo ./custom_setup.sh
+install:
+   - echo "Running a custom install command"
+   - echo "VERSION:${version}"
+   - mkdir -p ~/.m2/repository/com/github/jitpack/jsugcsdk/${VERSION}
+   - cp jsugcsdk.aar ~/.m2/repository/com/github/jitpack/jsugcsdk/${VERSION}/jsugcsdk-${VERSION}.aar 
+   - echo "<version>${VERSION}</version></project>" >> jsugcsdk.pom
+   - cp jsugcsdk.pom ~/.m2/repository/com/github/jitpack/jsugcsdk/${VERSION}/jsugcsdk-${VERSION}.pom
+
+env:
+   MYVAR: "custom environment variable"
